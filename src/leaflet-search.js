@@ -503,6 +503,7 @@ L.Control.Search = L.Control.extend({
 	},
 
 	_recordsFromJsonp: function(text, callAfter) {  //extract searched records from remote jsonp service
+		text = encodeURI(text);
 		L.Control.Search.callJsonp = callAfter;
 		var script = L.DomUtil.create('script','leaflet-search-jsonp', document.getElementsByTagName('body')[0] ),			
 			url = L.Util.template(this._getUrl(text)+'&'+this.options.jsonpParam+'=L.Control.Search.callJsonp', {s: text}); //parsing url
